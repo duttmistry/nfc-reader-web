@@ -5,7 +5,7 @@ import { ActionsContext } from "../../contexts/context";
 
 const Writer = ({ writeFn }) => {
   const [message, setMessage] = React.useState("");
-  const { actions, setActions } = useContext(ActionsContext);
+  const { setActions } = useContext(ActionsContext);
   const onSave = (e) => {
     e.preventDefault();
     writeFn(message);
