@@ -42,6 +42,8 @@ const Scan = () => {
           setMessage(textDecoder.decode(record.data));
           break;
         case "url":
+          const textDecoder_url = new TextDecoder(record.encoding);
+          setMessage(textDecoder_url.decode(record.data));
           // TODO: Read URL record with record data.
           break;
         default:
