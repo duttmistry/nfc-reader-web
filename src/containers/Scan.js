@@ -31,12 +31,13 @@ const Scan = () => {
         setActions(null);
       }
     }
-  }, [setActions]);
+  });
 
-  const onReading = ({ message, serialNumber }) => {
+  const onReading = async ({ message, serialNumber }) => {
     setSerialNumber(serialNumber);
     for (const record of message.records) {
-      alert(JSON.stringify(record));
+      alert(JSON.stringify(record.data));
+      alert(JSON.stringify(record.recordType));
       switch (record.recordType) {
         case "text":
           const textDecoder = new TextDecoder(record.encoding);
@@ -67,7 +68,37 @@ const Scan = () => {
         // TODO: Handle other records with record data.
       }
     }
+
+    // Call the function to start retrieving the NFC data history
+    await getNFCDataHistory();
   };
+  // Function to retrieve the entire history of NFC card data
+  async function getNFCDataHistory() {
+    // Check if the browser supports Web NFC
+    if ("NDEFReader" in window) {
+      const reader = new window.NDEFReader();
+
+      try {
+        // Start scanning for NFC tags
+        await reader.scan();
+
+        // Add an event listener for when a tag is discovered
+        reader.addEventListener("reading", ({ message }) => {
+          // Iterate through each record in the message
+          for (const record of message.records) {
+            // Process the record data
+            alert("Record Type:", record.recordType);
+            alert("Record Data:", record.data);
+            alert("---");
+          }
+        });
+      } catch (error) {
+        alert("Error reading NFC tag:", error);
+      }
+    } else {
+      alert("Web NFC is not supported by this browser.");
+    }
+  }
 
   useEffect(() => {
     scan();

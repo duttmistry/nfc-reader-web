@@ -28,27 +28,6 @@ const Format = () => {
         write: null,
       });
     };
-    if ("NDEFWriter" in window) {
-      const writer = new window.NDEFWriter();
-
-      // Create an empty NDEF message
-      const message = [{ recordType: "empty" }];
-
-      // Write the empty message to the NFC tag
-      writer
-        .write(message)
-        .then(() => {
-          alert("NFC tag data cleared successfully.");
-          setActions({
-            scan: null,
-          });
-        })
-        .catch((error) => {
-          alert("Failed to clear NFC tag data:", error);
-        });
-    } else {
-      alert("Web NFC is not supported by this browser.");
-    }
   }
 
   const onReading = ({ message, serialNumber }) => {
@@ -84,6 +63,27 @@ const Format = () => {
 
         // TODO: Handle other records with record data.
       }
+    }
+    if ("NDEFWriter" in window) {
+      const writer = new window.NDEFWriter();
+
+      // Create an empty NDEF message
+      const message = [{ recordType: "empty" }];
+
+      // Write the empty message to the NFC tag
+      writer
+        .write(message)
+        .then(() => {
+          alert("NFC tag data cleared successfully.");
+          setActions({
+            scan: null,
+          });
+        })
+        .catch((error) => {
+          alert("Failed to clear NFC tag data:", error);
+        });
+    } else {
+      alert("Web NFC is not supported by this browser.");
     }
   };
   return (
