@@ -5,9 +5,12 @@ import Write from "./containers/Write";
 import { useState } from "react";
 import { ActionsContext } from "./contexts/context";
 import Format from "./containers/FormatCard";
+import GetAllData from "./containers/GetAllData";
 
 function App() {
   const [actions, setActions] = useState(null);
+  const [getAllData, setGetAllData] = useState(false);
+
   const { scan, write, format } = actions || {};
 
   const actionsValue = { actions, setActions };
@@ -57,12 +60,16 @@ function App() {
         >
           Format Card
         </button>
+        <button onClick={() => setGetAllData(!getAllData)} className="btn">
+          Get All Data
+        </button>
       </div>
       <ActionsContext.Provider value={actionsValue}>
         {scan && <Scan />}
         {write && <Write />}
         {format && <Format />}
       </ActionsContext.Provider>
+      {getAllData && <GetAllData />}
     </div>
   );
 }
