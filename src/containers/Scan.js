@@ -51,16 +51,16 @@ const Scan = () => {
           break;
         case "mime":
           // Handle MIME type record with record data
-          const mimeDecoder = new TextDecoder(record.encoding);
-          const mimeType = record.mediaType;
-          const content = mimeDecoder.decode(record.data);
+          // const mimeDecoder = new TextDecoder(record.encoding);
+          // const mimeType = record.mediaType;
+          // const content = mimeDecoder.decode(record.data);
           // Do something with the content based on the MIME type
           break;
         // Add cases for other record types as needed
         default:
-          // Handle other record types with record data
-          const dataDecoder = new TextDecoder(record.encoding);
-          const rawData = dataDecoder.decode(record.data);
+        // Handle other record types with record data
+        // const dataDecoder = new TextDecoder(record.encoding);
+        // const rawData = dataDecoder.decode(record.data);
         // Do something with the raw data
 
         // TODO: Handle other records with record data.
