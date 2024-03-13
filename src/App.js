@@ -4,10 +4,11 @@ import Scan from "./containers/Scan";
 import Write from "./containers/Write";
 import { useState } from "react";
 import { ActionsContext } from "./contexts/context";
+import Format from "./containers/FormatCard";
 
 function App() {
   const [actions, setActions] = useState(null);
-  const { scan, write } = actions || {};
+  const { scan, write, format } = actions || {};
 
   const actionsValue = { actions, setActions };
 
@@ -21,21 +22,46 @@ function App() {
       <h1>NFC Tool</h1>
       <div className="App-container">
         <button
-          onClick={() => onHandleAction({ scan: "scanning", write: null })}
+          onClick={() =>
+            onHandleAction({
+              scan: "scanning",
+              write: null,
+              format: null,
+            })
+          }
           className="btn"
         >
           Scan
         </button>
         <button
-          onClick={() => onHandleAction({ scan: null, write: "writing" })}
+          onClick={() =>
+            onHandleAction({
+              scan: null,
+              write: "writing",
+              format: null,
+            })
+          }
           className="btn"
         >
           Write
+        </button>
+        <button
+          onClick={() =>
+            onHandleAction({
+              scan: null,
+              write: "writing",
+              format: "formatting",
+            })
+          }
+          className="btn"
+        >
+          Format Card
         </button>
       </div>
       <ActionsContext.Provider value={actionsValue}>
         {scan && <Scan />}
         {write && <Write />}
+        {format && <Format />}
       </ActionsContext.Provider>
     </div>
   );

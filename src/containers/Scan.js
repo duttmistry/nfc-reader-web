@@ -36,6 +36,7 @@ const Scan = () => {
   const onReading = ({ message, serialNumber }) => {
     setSerialNumber(serialNumber);
     for (const record of message.records) {
+      alert(record);
       switch (record.recordType) {
         case "text":
           const textDecoder = new TextDecoder(record.encoding);
