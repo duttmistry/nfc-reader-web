@@ -8,6 +8,7 @@ const Format = () => {
   const { actions, setActions } = useContext(ActionsContext);
   useEffect(() => {
     onWrite();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const onWrite = async () => {
     console.log("actions: ", actions);
