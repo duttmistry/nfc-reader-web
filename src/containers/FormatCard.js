@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Writer from "../components/Writer/Writer";
-import Scan from "./Scan";
 import Scanner from "../components/Scanner/Scanner";
 
 const Format = () => {
