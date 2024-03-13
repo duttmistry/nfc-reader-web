@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Writer from "../components/Writer/Writer";
+import Scan from "./Scan";
+import Scanner from "../components/Scanner/Scanner";
 
 const Format = () => {
-  const onWrite = async (message) => {
+  const [state, setState] = useState("scanning");
+  useEffect(() => {
+    onWrite();
+  }, []);
+  const onWrite = async () => {
     try {
       //   if ("NDEFWriter" in window) {
       //     const writer = new window.NDEFWriter();
@@ -26,13 +32,15 @@ const Format = () => {
       // This line will avoid showing the native NFC UI reader
       await ndef.scan();
       await ndef.write({ records: [] });
-      alert(`Value Saved!`);
+      alert(`Cleared!`);
+      setState(null);
     } catch (error) {
       alert(error);
+      setState(null);
     }
   };
 
-  return <Writer onWrite={onWrite} />;
+  return <Scanner status={state}></Scanner>;
 };
 
 export default Format;
