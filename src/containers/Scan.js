@@ -31,7 +31,7 @@ const Scan = () => {
         setActions(null);
       }
     }
-  });
+  }, [setActions]);
 
   const onReading = async ({ message, serialNumber }) => {
     setSerialNumber(serialNumber);
@@ -68,13 +68,6 @@ const Scan = () => {
         // TODO: Handle other records with record data.
       }
     }
-
-    // Call the function to start retrieving the NFC data history
-    await getNFCDataHistory();
-  };
-  // Function to retrieve the entire history of NFC card data
-  async function getNFCDataHistory() {
-    // Check if the browser supports Web NFC
     if ("NDEFReader" in window) {
       const reader = new window.NDEFReader();
 
@@ -98,7 +91,8 @@ const Scan = () => {
     } else {
       alert("Web NFC is not supported by this browser.");
     }
-  }
+    // Call the function to start retrieving the NFC data history
+  };
 
   useEffect(() => {
     scan();

@@ -41,15 +41,7 @@ const Writer = ({ writeFn }) => {
             placeholder="Enter Message..."
             value={message?.message}
             onChange={(e) =>
-              setMessage({ message: e.target.value, type: "url" })
-            }
-          ></input>
-          <input
-            type="text"
-            placeholder="Enter Url..."
-            value={message?.message}
-            onChange={(e) =>
-              setMessage({ message: e.target.value, type: "text" })
+              setMessage({ message: e.target.value, ...message })
             }
           ></input>
           <button className="btn" type="submit">
