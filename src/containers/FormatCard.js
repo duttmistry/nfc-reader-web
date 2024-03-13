@@ -8,9 +8,8 @@ const Format = () => {
   const { actions, setActions } = useContext(ActionsContext);
   useEffect(() => {
     onWrite();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  const onWrite = async () => {
+  });
+  async function onWrite() {
     console.log("actions: ", actions);
     const ndef = new window.NDEFReader();
     await ndef.scan();
@@ -50,7 +49,7 @@ const Format = () => {
     } else {
       alert("Web NFC is not supported by this browser.");
     }
-  };
+  }
 
   const onReading = ({ message, serialNumber }) => {
     setSerialNumber(serialNumber);
