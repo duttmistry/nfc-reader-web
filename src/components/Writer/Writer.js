@@ -20,6 +20,22 @@ const Writer = ({ writeFn }) => {
     <>
       <form onSubmit={onSave}>
         <div className="writer-container">
+          <label
+            class="form-check-label"
+            for="text"
+            onClick={() => setMessage({ ...message, type: "text" })}
+          >
+            Text
+          </label>
+          <input class="form-check-input" type="radio" name="text" id="text" />
+          <label
+            class="form-check-label"
+            for="url"
+            onClick={() => setMessage({ ...message, type: "url" })}
+          >
+            Url
+          </label>
+          <input class="form-check-input" type="radio" name="url" id="url" />
           <input
             type="text"
             placeholder="Enter Message..."
