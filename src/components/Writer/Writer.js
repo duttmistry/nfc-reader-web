@@ -23,7 +23,7 @@ const Writer = ({ writeFn }) => {
           <input
             type="text"
             placeholder="Enter Message..."
-            value={message}
+            value={message?.message}
             onChange={(e) =>
               setMessage({ message: e.target.value, type: "url" })
             }
@@ -31,7 +31,7 @@ const Writer = ({ writeFn }) => {
           <input
             type="text"
             placeholder="Enter Url..."
-            value={message}
+            value={message?.message}
             onChange={(e) =>
               setMessage({ message: e.target.value, type: "text" })
             }
