@@ -4,7 +4,7 @@ import Writer from "../components/Writer/Writer";
 const Write = () => {
   const onWrite = async (message) => {
     try {
-      console.log('message: ', message);
+      alert("message: ", JSON.stringify(message));
       const ndef = new window.NDEFReader();
       // This line will avoid showing the native NFC UI reader
       await ndef.scan();
