@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
-const GetAllData = () => {
-  const [data, setData] = useState([]);
+const GetAllData = ({ setData, data }) => {
   useEffect(() => {
     getData();
   });
@@ -25,11 +24,15 @@ const GetAllData = () => {
 
   return (
     <>
-      {data?.map((item, index) => (
-        <div key={index}>
-          {index + 1}. {item}
-        </div>
-      ))}
+      {data?.length > 0 ? (
+        data?.map((item, index) => (
+          <div key={index}>
+            {index + 1}. {item}
+          </div>
+        ))
+      ) : (
+        <div>No record Found</div>
+      )}
     </>
   );
 };

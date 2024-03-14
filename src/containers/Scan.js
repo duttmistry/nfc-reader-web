@@ -2,11 +2,14 @@ import React, { useCallback, useContext, useEffect, useState } from "react";
 import Scanner from "../components/Scanner/Scanner";
 import { ActionsContext } from "../contexts/context";
 
-const Scan = () => {
+const Scan = ({ setData }) => {
   const [message, setMessage] = useState("");
   const [serialNumber, setSerialNumber] = useState("");
   const { actions, setActions } = useContext(ActionsContext);
 
+  useEffect(() => {
+    setData([]);
+  });
   const scan = useCallback(async () => {
     if ("NDEFReader" in window) {
       try {
@@ -19,7 +22,7 @@ const Scan = () => {
         };
 
         ndef.onreading = (event) => {
-          alert("NDEF message read.");
+          // alert("NDEF message read.");
           onReading(event);
           setActions({
             scan: "scanned",

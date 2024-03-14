@@ -10,6 +10,7 @@ import GetAllData from "./containers/GetAllData";
 function App() {
   const [actions, setActions] = useState(null);
   const [getAllData, setGetAllData] = useState(false);
+  const [data, setData] = useState([]);
 
   const { scan, write, format } = actions || {};
 
@@ -65,11 +66,11 @@ function App() {
         </button>
       </div>
       <ActionsContext.Provider value={actionsValue}>
-        {scan && <Scan />}
-        {write && <Write />}
-        {format && <Format />}
+        {scan && <Scan setData={setData} />}
+        {write && <Write setData={setData} />}
+        {format && <Format setData={setData} />}
       </ActionsContext.Provider>
-      {getAllData && <GetAllData />}
+      {getAllData && <GetAllData setData={setData} data={data} />}
     </div>
   );
 }

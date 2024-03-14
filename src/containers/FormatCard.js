@@ -2,11 +2,12 @@ import React, { useEffect } from "react";
 // import Scanner from "../components/Scanner/Scanner";
 // import { ActionsContext } from "../contexts/context";
 
-const Format = () => {
+const Format = ({ setData }) => {
   // const [message, setMessage] = useState("");
   // const [serialNumber, setSerialNumber] = useState("");
   // const { actions, setActions } = useContext(ActionsContext);
   useEffect(() => {
+    setData([]);
     onWrite();
   });
   async function onWrite() {

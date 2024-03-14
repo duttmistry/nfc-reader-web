@@ -1,9 +1,10 @@
 import React from "react";
 import Writer from "../components/Writer/Writer";
 
-const Write = () => {
+const Write = ({ setData }) => {
   const onWrite = async (message) => {
     try {
+      setData([]);
       // alert("message: ", message.message);
       // alert("message: ", message.type);
       const ndef = new window.NDEFReader();
