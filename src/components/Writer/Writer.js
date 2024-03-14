@@ -20,10 +20,10 @@ const Writer = ({ writeFn }) => {
     },
     onSubmit: () => {
       setMessage(values);
-      alert("values: ", values);
-      console.log("message: ", message);
+      // alert("values: ", values);
+      // console.log("message: ", message);
       // e.preventDefaultuseFormik();
-      writeFn(message);
+      writeFn(values);
       setMessage("");
       setActions({
         scan: "scanned",
