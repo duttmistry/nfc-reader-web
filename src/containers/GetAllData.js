@@ -15,10 +15,10 @@ const GetAllData = () => {
       for (const record of event.message.records) {
         // alert("Record type:  " + record.recordType);
         // alert("MIME type:    " + record.mediaType);
-        alert("=== data ===\n" + decoder.decode(record.data));
+        // alert("=== data ===\n" + decoder.decode(record.data));
         allData?.push(decoder.decode(record.data));
       }
-      alert("allData: ", allData);
+      // alert("allData: ", allData);
       setData(allData);
     };
   }

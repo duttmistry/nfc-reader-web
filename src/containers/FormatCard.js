@@ -13,15 +13,16 @@ const Format = () => {
     const emptyRecord = {
       recordType: "empty",
     };
-
     const ndef = new window.NDEFReader();
+    // This line will avoid showing the native NFC UI reader
+    await ndef.scan();
+    alert("Scan started successfully.");
     await ndef.write({ records: [emptyRecord] });
-
+    alert("NFC tag data cleared successfully.");
     // console.log("actions: ", actions);
     // const ndef = new window.NDEFReader();
     // await ndef.scan();
 
-    // alert("Scan started successfully.");
     // ndef.onreadingerror = () => {
     //   alert("Cannot read data from the NFC tag. Try another one?");
     // };
