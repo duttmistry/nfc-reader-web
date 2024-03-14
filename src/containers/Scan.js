@@ -36,8 +36,8 @@ const Scan = () => {
   const onReading = async ({ message, serialNumber }) => {
     setSerialNumber(serialNumber);
     for (const record of message.records) {
-      alert(JSON.stringify(record.data));
-      alert(JSON.stringify(record.recordType));
+      // alert(JSON.stringify(record.data));
+      // alert(JSON.stringify(record.recordType));
       switch (record.recordType) {
         case "text":
           const textDecoder = new TextDecoder(record.encoding);
@@ -47,7 +47,7 @@ const Scan = () => {
           // Handle URL record with record data
           const urlDecoder = new TextDecoder(record.encoding);
           const url = urlDecoder.decode(record.data);
-          alert(url);
+          // alert(url);
           setMessage(url);
           window.location.href = url; // Redirect to the URL
           break;
@@ -78,12 +78,12 @@ const Scan = () => {
         // Add an event listener for when a tag is discovered
         reader.addEventListener("reading", ({ message }) => {
           // Iterate through each record in the message
-          for (const record of message.records) {
-            // Process the record data
-            alert("Record Type:", record.recordType);
-            alert("Record Data:", record.data);
-            alert("---");
-          }
+          // for (const record of message.records) {
+          // Process the record data
+          // alert("Record Type:", record.recordType);
+          // alert("Record Data:", record.data);
+          // alert("---");
+          // }
         });
       } catch (error) {
         alert("Error reading NFC tag:", error);

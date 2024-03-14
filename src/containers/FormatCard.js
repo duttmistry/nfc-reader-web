@@ -16,7 +16,7 @@ const Format = () => {
     const ndef = new window.NDEFReader();
     // This line will avoid showing the native NFC UI reader
     await ndef.scan();
-    alert("Scan started successfully.");
+    // alert("Scan started successfully.");
     await ndef.write({ records: [emptyRecord] });
     alert("NFC tag data cleared successfully.");
     // console.log("actions: ", actions);
